@@ -1,0 +1,31 @@
+{
+  "name": "node-lrs",
+  "version": "0.1.0",
+  "author": "Niels Meyering",
+  "description": "a web thing for scheduling",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nmeyering/bjschedule.git"
+  },
+  "contributors": [
+    {
+      "name": "Niels Meyering",
+      "email": "nmeyering@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "semver": "2.2.x"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "grunt-cli": "~0.1.11",
+    "grunt": "~0.4.2",
+    "grunt-nodemon": "~0.1.2"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "start": "grunt"
+  }
+}
