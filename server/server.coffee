@@ -41,6 +41,8 @@ server = http.createServer (req, res) ->
 				catch e
 					return send 400, 'unable to parse request as JSON'
 				if check_format requestData
+					# TODO should we use an array instead?
+					schedule[requestData.name] = requestData.times
 					send 200, 'thanks'
 				else
 					send 400, 'invalid schedule format'

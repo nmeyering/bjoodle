@@ -1,7 +1,7 @@
 TIMESTAMP = ///
 	^
-	[0-2][0-9]		# hour digits
-	:				# colon
+	(0?|[1-2])[0-9]	# hour digits
+	:
 	(00|30)			# minute digits, TODO: allow other values?
 	$
 ///
@@ -27,7 +27,7 @@ check_format = (schedule) ->
 		unless TIMESTAMP.test time
 			return false
 		[hours, minutes] = time.split ':'
-		[hours, minutes] = [Number hours, Number minutes]
+		[hours, minutes] = [(Number hours), (Number minutes)]
 		unless hours >= 0 and hours <= 23
 			return false
 		unless minutes >=0 and minutes <= 59
