@@ -1,3 +1,4 @@
-server = require './server.coffee'
+config = require './config'
+server = require './server'
 
-server.listen 8000
+server.listen config.port
