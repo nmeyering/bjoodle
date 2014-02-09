@@ -18,9 +18,12 @@
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
-    "grunt-cli": "~0.1.11",
     "grunt": "~0.4.2",
-    "grunt-nodemon": "~0.1.2"
+    "grunt-cli": "~0.1.11",
+    "grunt-mocha-test": "~0.9.0",
+    "grunt-nodemon": "~0.1.2",
+    "mocha": "~1.17.1",
+    "supertest": "~0.9.0"
   },
   "engines": {
     "node": ">=0.10"

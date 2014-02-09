@@ -46,7 +46,7 @@ request: (request) ->
 	unless 'times' of request
 		return false
 
-	unless check_times request.times
+	unless @times request.times
 		return false
 
 	return true
