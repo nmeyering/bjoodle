@@ -1,6 +1,5 @@
 module.exports = (grunt) ->
 
-  grunt.loadNpmTasks 'grunt-mocha-test'
   grunt.loadNpmTasks 'grunt-nodemon'
 
   grunt.initConfig

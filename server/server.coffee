@@ -1,6 +1,7 @@
 http = require 'http'
 url = require 'url'
 querystring = require 'querystring'
+check_format = require './check_format'
 
 schedule = {}
 
@@ -36,11 +37,13 @@ server = http.createServer (req, res) ->
 				requestData += data
 			req.on 'end', ->
 				try
-					schedule = JSON.parse requestData
+					requestData = JSON.parse requestData
 				catch e
 					return send 400, 'unable to parse request as JSON'
-
-				send 200, 'thanks'
+				if check_format requestData
+					send 200, 'thanks'
+				else
+					send 400, 'invalid schedule format'
 		else
 			schedule = {}
 
