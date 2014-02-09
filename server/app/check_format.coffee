@@ -6,20 +6,20 @@ TIMESTAMP = ///
 	$
 ///
 
-check_format = (schedule) ->
+module.exports =
+schedule: (schedule) ->
 	unless typeof schedule == 'object'
 		return false
+	for name of schedule
+		# i.e. it's a valid times structure
+		unless @times schedule[name]
+			return false
+	return true
 
-	unless 'name' of schedule
+times: (times) ->
+	unless times.length == 7
 		return false
-	unless typeof schedule.name == 'string'
-		return false
-
-	unless 'times' of schedule
-		return false
-	unless schedule.times.length == 7
-		return false
-	for time in schedule.times
+	for time in times
 		if time == null
 			continue
 		unless typeof time == 'string'
@@ -32,7 +32,21 @@ check_format = (schedule) ->
 			return false
 		unless minutes >=0 and minutes <= 59
 			return false
-
 	return true
 
-module.exports = check_format
+request: (request) ->
+	unless typeof request == 'object'
+		return false
+
+	unless 'name' of request
+		return false
+	unless typeof request.name == 'string'
+		return false
+
+	unless 'times' of request
+		return false
+
+	unless check_times request.times
+		return false
+
+	return true

@@ -5,7 +5,7 @@ check_format = require './check_format'
 
 schedule = {}
 
-server = http.createServer (req, res) ->
+module.exports = http.createServer (req, res) ->
 
 	send = (code, msg) ->
 		res.writeHead code,
@@ -40,7 +40,7 @@ server = http.createServer (req, res) ->
 					requestData = JSON.parse requestData
 				catch e
 					return send 400, 'unable to parse request as JSON'
-				if check_format requestData
+				if check_format.request requestData
 					# TODO should we use an array instead?
 					schedule[requestData.name] = requestData.times
 					send 200, 'thanks'
@@ -48,6 +48,3 @@ server = http.createServer (req, res) ->
 					send 400, 'invalid schedule format'
 		else
 			schedule = {}
-
-
-server.listen(8000)
