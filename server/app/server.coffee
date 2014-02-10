@@ -2,10 +2,15 @@ http = require 'http'
 url = require 'url'
 querystring = require 'querystring'
 check_format = require './check_format'
+config = require './config'
 
 schedule = {}
 
 module.exports = http.createServer (req, res) ->
+	if config.debug
+		console.log "Received #{req.method} request for #{req.url}"
+		console.log req.headers
+
 	send = (code, msg) ->
 		res.writeHead code,
 			'Content-Type': 'text/plain'
