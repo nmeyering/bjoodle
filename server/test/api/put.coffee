@@ -28,4 +28,4 @@ describe 'PUT request', ->
 				.set('content-type': 'application/json')
 				.set('content-length': data.length)
 				.send(data)
-				.expect(200, done)
+				.expect(201, done)

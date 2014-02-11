@@ -28,7 +28,7 @@ describe 'POST request', ->
 				.set('content-type': 'application/json')
 				.set('content-length': data.length)
 				.send(data)
-				.expect(200, done)
+				.expect(201, done)
 	describe 'with missing times', ->
 		it 'should be a rejected', (done) ->
 			data = example()
@@ -62,7 +62,7 @@ describe 'POST request', ->
 				.set('content-type': 'application/json')
 				.set('content-length': data.length)
 				.send(data)
-				.expect(200, done)
+				.expect(201, done)
 	describe 'with short times list', ->
 		it 'should be rejected', (done) ->
 			data = example()

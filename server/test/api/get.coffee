@@ -17,5 +17,3 @@ describe 'GET request with no parameters', ->
 				unless env.check_format.schedule res.body
 					return done new Error 'malformed response!'
 				done()
-
-

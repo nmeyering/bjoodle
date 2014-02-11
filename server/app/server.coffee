@@ -28,6 +28,12 @@ module.exports = http.createServer (req, res) ->
 	requestData = ''
 
 	switch req.method
+		when 'OPTIONS'
+			res.writeHead 204,
+				'Access-Control-Allow-Origin':  '*'
+				'Access-Control-Allow-Methods': 'OPTIONS, GET, POST, PUT, DELETE'
+				'Access-Control-Allow-Headers': req.getHeader 'Access-Control-Request-Headers'
+			res.end
 		when 'GET'
 			body = JSON.stringify schedule
 
