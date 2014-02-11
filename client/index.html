@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="bjoodleApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bjschedule</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      .bj-time-input {
+        width:4em;
+      }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body data-ng-controller="MainController">
+    <div class="row">
+	    <div class="col-md-6" style="text-align:right"><img src="pimmel.png" alt="Logo" style="padding:1em" width="80" height="80"><h1 style="display:inline;vertical-align:middle">bjoodle</h1></div>
+	    <div class="col-md-4"><h1><small>heute verfuegbar: {{liste}}</small></h1></div>
+    </div>
+
+    <div class="alert alert-success" data-ng-show="status.length != 0">{{status}}</div>
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>bjBoy</th>
+          <th>Mo</th>
+          <th>Di</th>
+          <th>Mi</th>
+          <th>Do</th>
+          <th>Fr</th>
+          <th>Sa</th>
+          <th>So</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+	<tr data-ng-repeat="boy in bjBoyz">
+          <td>{{boy.name}}</td>
+	  <td data-ng-repeat="time in boy.times">
+		<input type="text" data-ng-model="boy.times[$index]" class="form-control bj-time-input">
+	  </td>
+          <td>
+		<button type="button" class="btn btn-default btn-xs" data-ng-click="putBjBoySeparate(boy.name,boy.times)">
+			<span class="glyphicon glyphicon-ok"></span>
+		</button>
+	  </td>
+	</tr>
+        <tr>
+          <td><input type="text" data-ng-model="newBoyName" class="form-control" placeholder="Your name here"></td>
+	  <td data-ng-repeat="time in newBoyTimes">
+		<input type="text" value="{{time}}" class="form-control bj-time-input">
+	  </td>
+          <td>
+		<button type="button" class="btn btn-default btn-xs" data-ng-click="putNewBjBoy()">
+			<span class="glyphicon glyphicon-plus"></span>
+		</button>
+	  </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="js/angular-1.0.1.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

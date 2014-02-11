@@ -13,7 +13,8 @@ module.exports = http.createServer (req, res) ->
 
 	send = (code, msg) ->
 		res.writeHead code,
-			'Content-Type': 'text/plain'
+			'Content-Type': 'text/plain',
+			'Access-Control-Allow-Origin' : '*'
 		res.end msg
 
 	parsedUrl = url.parse req.url, true
@@ -23,17 +24,20 @@ module.exports = http.createServer (req, res) ->
 	if endpoint != '/api'
 		return send 404
 
-	headers = {}
-
 	requestData = ''
+
+	headers = {}
+	headers['Access-Control-Allow-Origin'] = '*'
+	headers['Access-Control-Allow-Methods'] = 'POST,GET,PUT,OPTIONS'
+	headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept";
+	headers["Access-Control-Allow-Credentials"] = false;
+	headers["Access-Control-Max-Age"] = '86400';
 
 	switch req.method
 		when 'OPTIONS'
-			res.writeHead 204,
-				'Access-Control-Allow-Origin':  '*'
-				'Access-Control-Allow-Methods': 'OPTIONS, GET, POST, PUT, DELETE'
-				'Access-Control-Allow-Headers': req.getHeader 'Access-Control-Request-Headers'
-			res.end
+			res.writeHead 200,
+				headers
+			res.end body
 		when 'GET'
 			body = JSON.stringify schedule
 
