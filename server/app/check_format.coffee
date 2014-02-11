@@ -20,7 +20,7 @@ times: (times) ->
 	unless times.length == 7
 		return false
 	for time in times
-		if time == null
+		if time == null || time == ''
 			continue
 		unless typeof time == 'string'
 			return false

@@ -11,7 +11,25 @@
 
     <style type="text/css">
       .bj-time-input {
-        width:4em;
+        width:8em;
+      }
+
+      /* Copypaste von hier: http://stackoverflow.com/questions/1517220/how-to-style-unordered-lists-in-css-as-comma-separated-text */
+      .bj-available-list {
+	display: inline;
+	list-style: none;
+      }
+
+      .bj-available-list li {
+	display: inline;
+      }
+
+      .bj-available-list li:after {
+	content: ", ";
+      }
+
+      .bj-available-list li:last-child:after {
+	content: ""
       }
     </style>
 
@@ -25,11 +43,24 @@
   <body data-ng-controller="MainController">
     <div class="row">
 	    <div class="col-md-6" style="text-align:right"><img src="pimmel.png" alt="Logo" style="padding:1em" width="80" height="80"><h1 style="display:inline;vertical-align:middle">bjoodle</h1></div>
-	    <div class="col-md-4"><h1><small>heute verfuegbar: {{liste}}</small></h1></div>
+	    <div class="col-md-4">
+			<h1>
+				<small>
+					heute verf&uuml;gbar:
+					<div data-ng-show="liste.length == 0">
+						niemand
+					</div>
+					<div data-ng-hide="liste.length == 0">
+					<ul class="bj-available-list">
+						<li data-ng-repeat="name in liste"><strong>{{name}}</strong></li>
+					</ul>
+					</div>
+				</small>
+			</h1>
+		</div>
     </div>
 
     <div class="alert alert-success" data-ng-show="status.length != 0">{{status}}</div>
-
 
     <table class="table">
       <thead>
