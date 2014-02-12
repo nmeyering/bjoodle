@@ -2,7 +2,7 @@ bjoodleApp = angular.module('bjoodleApp',[]);
 
 
 bjoodleApp.factory('bjBoyFactory',['$http',function($http) {
-		var urlBase = 'http://localhost:8000/api';	
+		var urlBase = 'http://' + document.domain + ':8000/api';
 
 		var bjBoyFactory = {};
 
