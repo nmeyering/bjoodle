@@ -10,6 +10,8 @@ schedule = {}
 
 # cobbled together piece of webserver
 serveStatic = (file, req, res) ->
+	unless config.serveHTML
+		return
 	unless req.method == 'GET'
 		return
 
