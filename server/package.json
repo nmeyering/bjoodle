@@ -14,7 +14,8 @@
     }
   ],
   "dependencies": {
-    "semver": "2.2.x"
+    "semver": "2.2.x",
+    "mime": "*"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
