@@ -11,10 +11,10 @@ schedule = {}
 # cobbled together piece of webserver
 serveStatic = (file, req, res) ->
 	unless config.serveHTML
-		res.end
+		res.end()
 		return
 	unless req.method == 'GET'
-		res.end
+		res.end()
 		return
 
 	if file == '' or file == '/'
@@ -67,7 +67,7 @@ module.exports = http.createServer (req, res) ->
 		when 'OPTIONS'
 			res.writeHead 204,
 				headers
-			res.end
+			res.end()
 		when 'GET'
 			body = JSON.stringify schedule
 
