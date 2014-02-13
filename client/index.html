@@ -62,6 +62,7 @@
 
     <div class="alert alert-success" data-ng-show="status.length != 0">{{status}}</div>
 
+<form>
     <table class="table">
       <thead>
         <tr>
@@ -79,7 +80,7 @@
       <tbody>
 	<tr data-ng-repeat="boy in bjBoyz">
           <td>{{boy.name}}</td>
-	  <td data-ng-repeat="time in boy.times">
+	  <td data-ng-repeat="day in [0,1,2,3,4,5,6]">
 		<input type="text" data-ng-model="boy.times[$index]" class="form-control bj-time-input">
 	  </td>
           <td>
@@ -91,7 +92,7 @@
         <tr>
           <td><input type="text" data-ng-model="newBoyName" class="form-control" placeholder="Your name here"></td>
 	  <td data-ng-repeat="time in newBoyTimes">
-		<input type="text" data-ng-model="{{time}}" class="form-control bj-time-input">
+		<input type="text" data-ng-model="time" class="form-control bj-time-input">
 	  </td>
           <td>
 		<button type="button" class="btn btn-default btn-xs" data-ng-click="putNewBjBoy()">
@@ -101,6 +102,7 @@
         </tr>
       </tbody>
     </table>
+</form>
 
     <script src="js/angular-1.0.1.min.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

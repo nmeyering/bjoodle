@@ -59,7 +59,7 @@ module.exports = http.createServer (req, res) ->
 		'Access-Control-Allow-Origin': '*'
 		'Access-Control-Allow-Methods': 'POST,GET,PUT,OPTIONS'
 		'Access-Control-Allow-Headers':
-			req.headers?['Access-Control-Request-Headers'] or ''
+			req.headers['access-control-request-headers'] or ''
 		'Access-Control-Allow-Credentials': false
 		'Access-Control-Max-Age': '86400'
 

@@ -1,8 +1,15 @@
 bjoodleApp = angular.module('bjoodleApp',[]);
 
+/* Komischer Hack
+bjoodleApp.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.defaults.useXDomain = true;
+	delete $httpProvider.defaults.headers.common['X-Requested-With'];
+}]);
+*/
 
 bjoodleApp.factory('bjBoyFactory',['$http',function($http) {
-		var urlBase = 'http://' + document.domain + ':8002/api';
+		var useDomain = document.domain != '' ? document.domain : "localhost";
+		var urlBase = 'http://' + useDomain + ':8002/api';
 
 		var bjBoyFactory = {};
 
