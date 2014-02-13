@@ -35,6 +35,7 @@ serveStatic = (file, req, res) ->
 	reader.pipe res
 
 module.exports = http.createServer (req, res) ->
+	req.on 'error', (err) -> console.log err
 	if config.debug
 		console.log "Received #{req.method} request for #{req.url}"
 		console.log req.headers
