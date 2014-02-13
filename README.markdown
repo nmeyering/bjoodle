@@ -1,6 +1,6 @@
 A simple custom scheduling web app.
 
-#Server Setup
+####Server Setup
 
 * install [nodejs](http://www.nodejs.org) / https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 * install [CoffeeScript](http://www.coffeescript.org) / or install with npm
