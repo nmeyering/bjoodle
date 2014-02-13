@@ -36,7 +36,11 @@ bjoodleApp.controller('MainController',function($scope,bjBoyFactory) {
 
 		$scope.initNewBjBoy = function() {
 			$scope.newBoyName = '';
-			$scope.newBoyTimes = ['20:00','20:00','20:00','20:00','20:00','20:00','20:00'];
+			$scope.newBoyTimes = jQuery.map(
+				['20:00','20:00','20:00','20:00','20:00','20:00','20:00'],
+				function(element,index) {
+					return { 'value' : element };
+				});
 		};
 
 		$scope.getBjBoyz = function(){
@@ -54,7 +58,7 @@ bjoodleApp.controller('MainController',function($scope,bjBoyFactory) {
 		};
 
 		$scope.putNewBjBoy = function() {
-			$scope.putBjBoy({ "name" : $scope.newBoyName,"times" : $scope.newBoyTimes });
+			$scope.putBjBoy({ "name" : $scope.newBoyName,"times" : jQuery.map($scope.newBoyTimes,function(element,index) { return element.value; }) });
 		}
 
 		$scope.removeBjBoy = function(name) {
