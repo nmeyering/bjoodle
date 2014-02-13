@@ -55,11 +55,14 @@ module.exports = http.createServer (req, res) ->
 
 	requestData = ''
 
+	getHeader = (header) ->
+		req.headers[header] or req.headers[header.toLowerCase()]
+
 	headers =
 		'Access-Control-Allow-Origin': '*'
 		'Access-Control-Allow-Methods': 'POST,GET,PUT,OPTIONS,DELETE'
 		'Access-Control-Allow-Headers':
-			req.headers['access-control-request-headers'] or ''
+			(getHeader 'access-control-request-headers') or ''
 		'Access-Control-Allow-Credentials': false
 		'Access-Control-Max-Age': '86400'
 
