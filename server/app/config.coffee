@@ -1,4 +1,4 @@
 module.exports =
-	port: 8000
+	port: 8002
 	debug: false
 	serveHTML: true
