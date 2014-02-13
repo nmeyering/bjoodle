@@ -91,7 +91,7 @@
         <tr>
           <td><input type="text" data-ng-model="newBoyName" class="form-control" placeholder="Your name here"></td>
 	  <td data-ng-repeat="time in newBoyTimes">
-		<input type="text" value="{{time}}" class="form-control bj-time-input">
+		<input type="text" data-ng-model="{{time}}" class="form-control bj-time-input">
 	  </td>
           <td>
 		<button type="button" class="btn btn-default btn-xs" data-ng-click="putNewBjBoy()">
