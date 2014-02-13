@@ -57,7 +57,7 @@ module.exports = http.createServer (req, res) ->
 
 	headers =
 		'Access-Control-Allow-Origin': '*'
-		'Access-Control-Allow-Methods': 'POST,GET,PUT,OPTIONS'
+		'Access-Control-Allow-Methods': 'POST,GET,PUT,OPTIONS,DELETE'
 		'Access-Control-Allow-Headers':
 			req.headers['access-control-request-headers'] or ''
 		'Access-Control-Allow-Credentials': false

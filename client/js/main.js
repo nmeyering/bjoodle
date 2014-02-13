@@ -21,6 +21,10 @@ bjoodleApp.factory('bjBoyFactory',['$http',function($http) {
 			return $http.post(urlBase,boy);
 		};
 
+		bjBoyFactory.removeBjBoy = function(boyName) {
+			return $http.delete(urlBase+'?name='+boyName);
+		};
+
 		return bjBoyFactory;
 }]);
 
@@ -51,6 +55,18 @@ bjoodleApp.controller('MainController',function($scope,bjBoyFactory) {
 
 		$scope.putNewBjBoy = function() {
 			$scope.putBjBoy({ "name" : $scope.newBoyName,"times" : $scope.newBoyTimes });
+		}
+
+		$scope.removeBjBoy = function(name) {
+			bjBoyFactory.removeBjBoy(name)
+				.success(function (boyz) {
+					$scope.getBjBoyz();
+					$scope.calcAvailable();
+					$scope.status = 'removed'
+			    	})
+			    	.error(function (error) {
+					$scope.status = 'Unable to give blowjobs: ' + error.message;
+			    	});
 		}
 
 		$scope.putBjBoySeparate = function(name,times) {
