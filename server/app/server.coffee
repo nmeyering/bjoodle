@@ -11,8 +11,10 @@ schedule = {}
 # cobbled together piece of webserver
 serveStatic = (file, req, res) ->
 	unless config.serveHTML
+		res.end
 		return
 	unless req.method == 'GET'
+		res.end
 		return
 
 	if file == '' or file == '/'
@@ -32,7 +34,6 @@ serveStatic = (file, req, res) ->
 	reader = fs.createReadStream file
 	reader.pipe res
 
-
 module.exports = http.createServer (req, res) ->
 	if config.debug
 		console.log "Received #{req.method} request for #{req.url}"
@@ -48,7 +49,7 @@ module.exports = http.createServer (req, res) ->
 	endpoint = parsedUrl.pathname
 	params = parsedUrl.query
 
-	if endpoint != '/api'
+	unless endpoint in ['/api', '/api/']
 		return serveStatic endpoint, req, res
 
 	requestData = ''
