@@ -65,7 +65,7 @@ module.exports = http.createServer (req, res) ->
 
 	switch req.method
 		when 'OPTIONS'
-			res.writeHead 200,
+			res.writeHead 204,
 				headers
 			res.end
 		when 'GET'
@@ -92,6 +92,6 @@ module.exports = http.createServer (req, res) ->
 		when 'DELETE'
 			bjboy = params['name']
 			delete schedule[bjboy] if bjboy?
-			send 200
+			send 204
 		else
 			send 501, 'method not supported'
