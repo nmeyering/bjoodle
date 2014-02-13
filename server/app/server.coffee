@@ -65,9 +65,9 @@ module.exports = http.createServer (req, res) ->
 
 	switch req.method
 		when 'OPTIONS'
-			res.writeHead 204,
+			res.writeHead 200,
 				headers
-			res.end body
+			res.end
 		when 'GET'
 			body = JSON.stringify schedule
 
@@ -90,7 +90,8 @@ module.exports = http.createServer (req, res) ->
 				else
 					send 400, 'invalid schedule format'
 		when 'DELETE'
-			schedule = {}
-			send 204
+			bjboy = params['name']
+			delete schedule[bjboy] if bjboy?
+			send 200
 		else
 			send 501, 'method not supported'
